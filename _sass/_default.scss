@@ -1,0 +1,324 @@
+:root {
+    /* Design Tokens */
+    /* Colors */
+    --color-surface: #121212;
+    --color-surface-muted: #2c2c2c;
+    --color-border: #555555; /* Unifying #555, darkgray */
+    --color-text-primary: #dddddd;
+    --color-text-secondary: #ffffff; /* Some text is pure white */
+    --color-text-muted: #a3a3a3;
+    --color-accent-1: #388dc2; /* Link blue */
+    --color-accent-2: #e093e0; /* Highlight pink/purple */
+
+    /* Spacing */
+    --space-xs: 0.3125rem; /* 5px */
+    --space-sm: 0.625rem;  /* 10px */
+    --space-md: 1.25rem;   /* 20px */
+    --space-lg: 2rem;      /* 32px */
+    --space-xl: 3rem;      /* 48px */
+
+    /* Radius */
+    --radius-sm: 5px;
+    --radius-md: 8px;
+
+    --paragraphFontSize: 1rem;
+    --note-font-size: 1rem;
+    --titleFont: system-ui;
+    --linkFont: monospace;
+    --tagFont: monospace;
+    --dateFont: Georgia;
+    --backgroundColor: var(--color-surface);
+    --linkColor: var(--color-accent-1);
+    --pageEndMargin: var(--space-md);
+    /* Nav Page Vars */
+    --nav-border-color: #ffffff; /* Kept specific for now, or map to text-secondary? Nav uses white */
+    --nav-text-color: #ffffff;
+    /* Writing Page Vars */
+    --writing-text-primary: var(--color-text-primary);
+    --writing-text-secondary: var(--color-text-muted);
+    --writing-border-color: var(--color-border);
+    --writing-tag-active: #cea2fd;
+    --writing-tag-text: #ffffff;
+    /* Collect Page Vars */
+    --collect-border-color: #ffffff;
+    --collect-text-primary: var(--color-text-primary);
+    /* About Page Vars */
+    --about-highlight-color: var(--color-accent-2);
+    --about-divider-color: var(--color-border);
+    /* Note Page Vars */
+    --note-text-primary: var(--color-text-primary);
+    --note-text-secondary: #bbbbbb; /* Keep specific for now or map to muted */
+}
+
+:root[data-theme="light"] {
+    --color-surface: #f0f0f0;
+    --color-surface-muted: #e0e0e0; /* Assuming light grey for muted surface */
+    --color-border: #cccccc; /* Light border */
+    --color-text-primary: #000000;
+    --color-text-secondary: #000000;
+    --color-text-muted: #666666;
+    --color-accent-1: #126ba2;
+    --color-accent-2: #bd41bd;
+
+    --linkColor: var(--color-accent-1);
+    /* Nav Page Vars */
+    --nav-border-color: #000000;
+    --nav-text-color: #000000;
+    /* Writing Page Vars */
+    --writing-text-primary: var(--color-text-primary);
+    --writing-text-secondary: var(--color-text-muted);
+    --writing-border-color: var(--color-border); /* was #666666 */
+    --writing-tag-active: #a55df1;
+    --writing-tag-text: #000000;
+    /* Collect Page Vars */
+    --collect-border-color: #000000;
+    --collect-text-primary: var(--color-text-primary);
+    /* About Page Vars */
+    --about-highlight-color: var(--color-accent-2);
+    --about-divider-color: var(--color-text-muted); /* was #666666 */
+    /* Note Page Vars */
+    --note-text-primary: var(--color-text-primary);
+    --note-text-secondary: var(--color-text-muted);
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /* Prevent double scrollbars */
+    user-select: text;
+    /* Allow selection */
+    -webkit-user-select: text;
+    /* For WebKit-based browsers */
+    -moz-user-select: text;
+    /* For Firefox */
+    -ms-user-select: text;
+    /* For Internet Explorer/Edge */
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: var(--color-surface);
+    color: var(--color-text-secondary);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1rem;
+    /* 16px */
+}
+
+/* for the medium size screen like macbook air */
+/* Using transform: scale() instead of non-standard zoom property */
+@media (min-width: 1000px) and (max-width: 1440px) and (orientation: landscape) {
+    body {
+        transform: scale(0.8);
+        transform-origin: top left;
+        width: 125%; /* Compensate for scaling: 100% / 0.8 = 125% */
+        height: 125%;
+    }
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    margin: var(--space-sm) 0;
+}
+
+nav li a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-size: 1rem;
+    /* 16px */
+}
+
+/* note that this is for everything except the index.css, which needs to be centered */
+/* TODO: refactor this later */
+.l-container {
+    display: grid;
+    grid-template-columns: 5fr 7fr 5fr;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-surface);
+}
+
+:root[data-theme="light"] .l-container {
+    background-color: var(--color-surface);
+}
+
+:root[data-theme="light"] .l-center {
+    background-color: var(--color-surface);
+}
+
+/* for mobile & tablet, to make the main content rendered more by making it display as block */
+@media (max-width: 1032px) {
+    .l-container {
+        display: block;
+        background-color: var(--color-surface);
+    }
+
+    .l-left {
+        display: none;
+    }
+
+    .l-right {
+        width: 0;
+    }
+
+    .l-center {
+        background-color: var(--color-surface);
+    }
+}
+
+
+.l-grid {
+    padding: var(--space-md);
+    height: 100%;
+    overflow: auto;
+}
+
+.l-left {
+    background-color: var(--color-surface-muted);
+}
+
+.l-center {
+    background-color: var(--color-surface-muted);
+    padding: var(--space-md);
+    scroll-behavior: smooth;
+}
+
+.l-right {
+    background-color: var(--color-surface-muted);
+    position: relative;
+}
+
+/* dark mode */
+/* Specific styles for paths with data-theme and svg*/
+:root[data-theme="dark"] a {
+    color: #50b0eb;
+}
+
+path {
+    fill: #000;
+    stroke: #000;
+}
+
+:root[data-theme="dark"] path {
+    fill: #fff;
+    stroke: #fff;
+}
+
+:root[data-theme="light"] path {
+    fill: #000;
+    stroke: #000;
+}
+
+line {
+    stroke: #000;
+}
+
+:root[data-theme="dark"] line {
+    stroke: #fff;
+}
+
+:root[data-theme="light"] line {
+    stroke: #000;
+}
+
+path.st0 {
+    fill: none;
+    stroke: #000000;
+    stroke-miterlimit: 10;
+}
+
+:root[data-theme="dark"] path.st0 {
+    fill: none;
+    stroke: #ffffff;
+    stroke-miterlimit: 10;
+}
+
+:root[data-theme="light"] path.st0 {
+    fill: none;
+    stroke: #000000;
+    stroke-miterlimit: 10;
+}
+
+/* for the svg rss */
+path.st1 {
+    fill: none;
+    stroke: #000000;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+}
+
+:root[data-theme="dark"] path.st1 {
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+}
+
+/* for the svg rss */
+:root[data-theme="light"] path.st1 {
+    fill: none;
+    stroke: #000000;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+}
+
+/* Apply dark mode styles based on system preference */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) path {
+        fill: #fff;
+        stroke: #fff;
+    }
+
+    :root:not([data-theme="light"]) line {
+        stroke: #fff;
+    }
+
+    :root:not([data-theme="light"]) path.st0 {
+        fill: none;
+        stroke: #ffffff;
+        stroke-miterlimit: 10;
+    }
+
+    :root:not([data-theme="light"]) path.st1 {
+        fill: none;
+        stroke: #ffffff;
+        stroke-width: 2;
+        stroke-miterlimit: 10;
+    }
+}
+
+@keyframes a-underline-text-left-right {
+    0% {
+        background-size: 0% 1px;
+        background-position: 0% 100%;
+    }
+
+    100% {
+        background-size: 100% 1px;
+        background-position: 0% 100%;
+    }
+}
+
+@keyframes a-underline-text-bottom-up {
+    0% {
+        background-size: 100% 1px;
+        background-position: 0% 100%;
+    }
+
+    100% {
+        background-size: 100% 100%;
+        background-position: 100% 0%;
+    }
+}

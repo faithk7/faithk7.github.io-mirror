@@ -1,0 +1,136 @@
+/* Styles specific to about.html */
+
+.c-about-container p {
+    line-height: 1.5em;
+    text-align: justify;
+    font-weight: 300;
+    font-family: 'Courier New', Courier, monospace
+}
+
+.c-about-container a {
+    text-decoration: none;
+    color: var(--linkColor);
+    transition: color 0.3s;
+}
+
+.c-about-container a:hover {
+    opacity: 0.8;
+}
+
+.c-about-container br {
+    user-select: none;
+}
+
+.c-about-container span.highlight {
+    color: var(--about-highlight-color);
+}
+
+.c-about-container {
+    margin: var(--space-md);
+    z-index: 1000;
+    position: relative;
+    user-select: text;
+    padding-bottom: var(--space-lg);
+}
+
+/* About page background art (moved from former head-about.html inline <style>) */
+.c-about-container::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(/assets/kokoro_dark.webp);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    background-attachment: fixed;
+    filter: invert(1) brightness(1.2) opacity(0.15);
+    z-index: 0;
+    will-change: transform;
+    pointer-events: none;
+}
+
+:root[data-theme="light"] .c-about-container::before {
+    background-image: url(/assets/kokoro.webp);
+    filter: brightness(0.7) opacity(0.5);
+}
+
+
+.c-about-container::after {
+    content: "革命前夜";
+    font-size: 0.7rem;
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin: 0 auto;
+    margin-top: var(--space-md);
+    position: relative;
+    text-align: center;
+    color: var(--about-divider-color);
+    padding-bottom: var(--space-md);
+}
+
+.o-about-title {
+    font-size: 2rem;
+    margin-bottom: var(--space-md);
+    font-family: var(--titleFont);
+}
+
+.o-about-item-title {
+    font-size: 1.5rem;
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-sm);
+    font-family: var(--titleFont);
+}
+
+.o-about-item-title::before {
+    content: "#";
+    margin-right: 1px;
+    color: var(--linkColor);
+}
+
+.o-about-item-subtitle {
+    font-size: 1.25rem;
+    margin-top: var(--space-sm);
+    margin-bottom: var(--space-sm);
+    font-family: var(--titleFont);
+}
+
+.o-about-item-subtitle::before {
+    content: "|";
+    margin-right: 1px;
+    color: var(--about-highlight-color);
+}
+
+.o-about-content {
+    font-size: 1.125rem;
+    margin: 0px;
+}
+
+@media (max-width: 767px) {
+    .c-about-container {
+        margin: var(--space-sm);
+    }
+
+    .c-about-container p {
+        line-height: 1.7;
+    }
+
+    .o-about-title {
+        font-size: 1.5rem;
+    }
+
+    .o-about-item-title {
+        font-size: 1.2rem;
+    }
+
+    .o-about-item-subtitle {
+        font-size: 1.05rem;
+    }
+
+    .o-about-content {
+        font-size: 0.95rem;
+    }
+}

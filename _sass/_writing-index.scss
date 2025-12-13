@@ -1,0 +1,146 @@
+/* Styles specific to writing-index.html */
+
+.o-writing-index-title {
+    font-family: var(--titleFont);
+}
+
+.c-writing-index-container {
+    margin: var(--space-md);
+    position: relative;
+    /* Ensure the container is positioned relative for the pseudo-element */
+}
+
+.c-tag-container-meta {
+    margin-bottom: var(--space-lg);
+}
+
+.c-post-meta-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.c-hashtag-container-post {
+    display: flex;
+    gap: var(--space-xs);
+    align-items: center;
+}
+
+.c-writing-index-container::after {
+    content: "ₖ₇";
+    font-size: 1.3rem;
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: var(--writing-border-color);
+    margin: 0 auto;
+    margin-top: var(--space-md);
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    text-align: center;
+    transform: translateY(2rem);
+    color: var(--writing-border-color);
+}
+
+.c-writing-item-container {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+    border: 1px solid var(--writing-border-color);
+    padding: var(--space-md);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-md);
+}
+
+.o-writing-note-date {
+    display: inline-block;
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--writing-text-secondary);
+    font-family: var(--dateFont);
+}
+
+#all-tag {
+    color: var(--writing-tag-active);
+}
+
+.o-tag {
+    display: inline-block;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    line-height: 1.5em;
+    font-family: serif, Times;
+    text-decoration: none;
+    background-image: linear-gradient(to top, var(--writing-tag-text) 1px, transparent 1px);
+    background-size: 0px;
+    background-repeat: no-repeat;
+    background-position: 0% 100%;
+    transition: color 0.3s;
+    font-family: var(--tagFont);
+    border: 0px;
+    background: transparent;
+    padding: 0;
+    color: var(--writing-tag-text);
+    margin-left: 0px;
+    margin-right: var(--space-sm);
+    margin-bottom: var(--space-xs);
+    cursor: pointer;
+}
+
+.o-tag:hover {
+    animation: a-underline-text-left-right 0.5s forwards;
+}
+
+/* for selected tag */
+.selected-tag {
+    color: var(--writing-tag-text);
+    background-image: linear-gradient(to top, var(--writing-tag-text) 1px, transparent 1px);
+    background-size: 100%;
+}
+
+.o-tag::before {
+    content: "#";
+    margin-right: 1px;
+}
+
+.o-post-tag {
+    background-size: 0px;
+    color: var(--writing-text-secondary);
+    font-family: var(--tagFont);
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: 0;
+    background: transparent;
+    padding: 0;
+}
+
+.o-post-tag::after {
+    content: "/";
+    margin-left: var(--space-xs);
+}
+
+.o-post-tag:last-child::after {
+    content: "";
+}
+
+.c-post-title-container {
+    width: 100%;
+}
+
+.o-post-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 400;
+    font-size: 1.3rem;
+    margin-bottom: var(--space-sm);
+    margin-top: 0;
+    width: 100%;
+}
+
+h3.o-post-title a {
+    color: var(--titleColor);
+}

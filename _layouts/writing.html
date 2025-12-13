@@ -1,0 +1,108 @@
+---
+layout: default
+---
+
+{% include toc.html html=content class="toc-container" %}
+
+<div class="c-writing-post-meta-container">
+    <h1 class="o-writing-post-title">{{ page.title | replace: "| Kai Qu", "" }}</h1>
+    <div class="c-writing-post-date">{{ page.date | date: "%B %d, %Y" }}</div>
+    <div class="c-writing-post-tag-container">
+        {% for tag in page.tags %}
+        <span class="o-writing-post-tag" data-theme="light">{{ tag }}</span>
+        {% unless forloop.last %}<span style="margin-left: 2px; margin-right: 2px;"> / </span>{% endunless %}
+        {% endfor %}
+    </div>
+    <div class="c-writing-post-container">
+        <div class="o-writing-post-text" data-theme="light">
+            {{ content }}
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript moved to bottom -->
+<script defer>
+    // Initialize when DOM is ready
+    document.addEventListener("DOMContentLoaded", function () {
+        // Open external links in .o-writing-post-text in a new tab (and set rel for security)
+        document.querySelectorAll('.o-writing-post-text a[href]').forEach(function (link) {
+            try {
+                var url = new URL(link.getAttribute('href'), location.href);
+                if (url.origin === location.origin) return;
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+            } catch (_) {
+                // ignore malformed href
+            }
+        });
+
+        // Smooth scroll with offset for TOC links; use delegation for reliability
+        var isScrolling = false;
+        var scrollOffset = 5; // Fixed 5px offset from viewport top
+
+        function scrollToHash(hash) {
+            if (isScrolling) return; // Prevent multiple simultaneous scrolls
+
+            var id = (hash || '').replace(/^#/, '');
+            if (!id) return;
+            var target = document.getElementById(decodeURIComponent(id));
+            if (!target) return;
+
+            var scrollContainer = document.querySelector('.l-center');
+            if (!scrollContainer) return;
+
+            isScrolling = true;
+
+            // Calculate target position relative to scroll container
+            // Get absolute positions relative to viewport
+            var targetRect = target.getBoundingClientRect();
+            var containerRect = scrollContainer.getBoundingClientRect();
+            
+            // Calculate position: current scroll + target position relative to container top - offset
+            var targetPosition = scrollContainer.scrollTop + (targetRect.top - containerRect.top) - scrollOffset;
+            
+            // Use scrollTo for smooth scrolling (better cross-browser support)
+            scrollContainer.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+
+            // Reset the scrolling flag after animation completes
+            setTimeout(function () {
+                isScrolling = false;
+            }, 600);
+        }
+
+        document.addEventListener('click', function (e) {
+            var link = e.target && e.target.closest && e.target.closest('.toc-container a[href*="#"]');
+            if (!link) return;
+            var href = link.getAttribute('href') || '';
+            // If the link points to another page, let browser handle it
+            try {
+                var url = new URL(href, location.href);
+                if (url.pathname !== location.pathname) return;
+                var hash = url.hash;
+            } catch (_) {
+                var hash = href.indexOf('#') >= 0 ? href.slice(href.indexOf('#')) : '';
+            }
+            if (!hash) return;
+            // Only prevent default if target exists on this page
+            var id = hash.replace(/^#/, '');
+            var target = document.getElementById(decodeURIComponent(id));
+            if (!target) return;
+            e.preventDefault();
+            scrollToHash(hash);
+            if (history && history.replaceState) {
+                history.replaceState(null, '', hash);
+            } else {
+                location.hash = hash;
+            }
+        });
+
+        // Also handle direct hash on load and after hash changes
+        if (location.hash) {
+            setTimeout(function () { scrollToHash(location.hash); }, 0);
+        }
+        window.addEventListener('hashchange', function () { scrollToHash(location.hash); });
+    });
+</script>

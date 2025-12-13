@@ -1,0 +1,43 @@
+/* Styles specific to note.html */
+
+.c-note-container {
+    margin: var(--space-md);
+}
+
+.o-note-title {
+    font-size: 2rem;
+    margin-bottom: var(--space-md);
+    font-family: var(--titleFont);
+}
+
+.c-note-item-container {
+    margin-bottom: var(--space-md);
+    border-bottom: 0.0625rem solid var(--color-border);
+    padding-bottom: var(--space-sm);
+}
+
+.c-note-item-container p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    line-height: 1.5;
+}
+
+.o-note-date {
+    font-size: 1rem;
+    color: var(--note-text-secondary);
+    margin-bottom: var(--space-xs);
+    font-family: var(--dateFont);
+}
+
+.o-note-text {
+    font-size: var(--note-font-size);
+    color: var(--note-text-primary);
+    font-weight: 400;
+}
+
+.o-note-footer {
+    text-align: center;
+    margin-top: var(--space-md);
+    font-size: 0.875rem;
+    color: var(--note-text-secondary);
+    padding-bottom: var(--pageEndMargin);
+}

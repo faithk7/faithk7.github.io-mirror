@@ -1,0 +1,23 @@
+---
+layout: default
+title: Notes
+permalink: /note
+description: "Kai Qu's recent notes"
+head_include: head.html
+---
+
+<div class="c-note-container">
+    <h1 class="o-note-title">Recent Notes</h1>
+    {% assign sorted_notes = site.notes | where_exp: "note", "note.hidden != true" | sort: 'date' | reverse %}
+    {% for note in sorted_notes %}
+    <div class="c-note-item-container">
+        <div class="o-note-date">{{ note.date | date: "%B %d, %Y" }}</div>
+        <div class="o-note-text">{{ note.content | markdownify }}</div>
+    </div>
+    {% endfor %}
+    <div class="o-note-footer">
+        Only the most recent 100 notes are shown
+    </div>
+</div>
+
+

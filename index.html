@@ -1,0 +1,52 @@
+---
+layout: default
+title: Home
+description: "Kai Qu's home page on the World Wide Web"
+head_include: head.html
+---
+
+<div class="c-center-container">
+    <div class="c-index-container">
+        <div class="c-name-card-container">
+            <h1 class="o-name">Kai Qu</h1>
+            <div class="o-status-quo" data-status-loading hidden>
+                <span data-status-text></span> <span data-status-datetime></span>
+            </div>
+            <div class="o-summary">
+                <span class="o-summary-line">A software engineer based in Beijing, CN.</span>
+                <span class="o-summary-line">Previous homes include Hangzhou, Boston, Atlanta, and
+                    Charlottesville.</span>
+                <span class="o-summary-line">Loves reading, running and watching anime.</span>
+            </div>
+        </div>
+        <div class="c-info-card-container">
+            <nav class="o-info">
+                <a class="o-social" href="https://read.cv/lastk7" target="_blank">read.cv</a> /
+                <a class="o-social" href="https://github.com/faithk7" target="_blank">github</a> /
+                <a class="o-social" href="https://www.kaggle.com/faithk7u" target="_blank">kaggle</a> /
+                <a class="o-social" href="https://www.linkedin.com/in/kqu1106/" target="_blank">linkedin</a>
+            </nav>
+            <nav class="o-info">
+                <a class="o-social" href="https://k7m.notion.site/books" target="_blank">library</a> /
+                <a class="o-social" href="https://k7m.xyz/tools" target="_blank">tools</a> /
+                <a class="o-social" href="https://music.163.com/#/user?id=1687898619" target="_blank">netease</a> /
+                <a class="o-social" href="https://bangumi.tv/user/535734" target="_blank">bangumi</a>
+            </nav>
+        </div>
+        {% include stories.html lang="en" %}
+    </div>
+</div>
+
+<div class="c-quote-container" data-quote>
+    <div class="o-quote" data-quote-text>死神はリンゴしか食べないから</div>
+    <button class="o-quote-reload" type="button" data-quote-reload>↻</button>
+</div>
+
+<div class="c-index-art-container">
+    <img src="/assets/spider-lily.svg" alt="Spider Lily" class="c-index-art">
+</div>
+
+<!-- JavaScript moved to bottom -->
+<script id="quotes-data" type="application/json">{{ site.data.quotes | jsonify }}</script>
+<script type="module" src="/assets/js/index.js" defer></script>
+<script type="module" src="https://unpkg.com/open-stories-element@latest" async crossorigin="anonymous"></script>

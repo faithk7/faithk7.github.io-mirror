@@ -1,0 +1,209 @@
+/* Styles specific to collection.html */
+
+.c-collection-container {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: auto 1fr;
+    gap: var(--space-md);
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    box-sizing: border-box;
+    overflow: hidden; /* prevent inner layout from creating extra scroll space */
+}
+
+/* Collect page: disable the default .l-center scroll container;
+   let the collect tile container decide whether scrolling is needed. */
+body[data-page*="collect"] .l-center {
+    overflow: hidden;
+}
+
+.o-collection-title {
+    grid-column: 1 / -1;
+    font-size: 2rem;
+    margin-bottom: var(--space-md);
+    align-self: flex-start;
+    font-family: var(--titleFont);
+    position: fixed;
+}
+
+.c-collection-nav-container {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    padding-right: var(--space-sm);
+    background-color: inherit;
+    border-right: 2px solid var(--collect-border-color);
+    height: auto;
+    min-height: fit-content;
+    align-self: center;
+    width: auto;
+    max-width: 200px;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.o-collection-nav-icon {
+    font-size: 1.5rem;
+    margin-right: var(--space-sm);
+    margin-bottom: 3px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    color: inherit;
+    font-family: inherit;
+}
+
+.o-collection-nav-icon.selected {
+    text-decoration: underline;
+    color: inherit;
+}
+
+.c-collection-tile-container {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+    padding: var(--space-sm);
+    background-color: inherit;
+    min-height: 0;
+    align-self: stretch;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 20%;
+    position: relative;
+}
+
+.c-collection-section {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    opacity: 1;
+    transform: none;
+    transition: none;
+    pointer-events: auto;
+    position: static;
+    visibility: visible;
+
+    &.active {
+        display: flex;
+    }
+}
+
+.c-collection-item-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.o-collection-item {
+    font-size: 1.125rem;
+    color: var(--collect-text-primary);
+    margin-bottom: var(--space-sm);
+    /* Removed collect icon bullets (collect-icon-black/white.svg) */
+    padding-left: 0;
+}
+
+.o-collection-item:nth-last-of-type(1) {
+    margin-bottom: var(--space-md);
+}
+
+/* Video popup and overlay styles */
+.c-video-popup-iframe {
+    width: 80%;
+    height: 80%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.c-video-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    cursor: pointer;
+}
+
+.c-video-popup-close {
+    position: fixed;
+    top: 5%;
+    right: 10%;
+    z-index: 1001;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid #333;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.c-video-popup-close:hover,
+.c-video-popup-close:focus {
+    background-color: #fff;
+    transform: scale(1.1);
+    outline: 2px solid #666;
+    outline-offset: 2px;
+}
+
+.c-video-popup-close:active {
+    transform: scale(0.95);
+}
+
+/* VPN Banner Styles */
+.c-vpn-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: #FEF3C7; /* amber-100 */
+    border-bottom: 1px solid #F59E0B; /* amber-500 */
+    color: #92400E; /* amber-700 */
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.c-vpn-banner-text {
+    flex: 1;
+}
+
+.c-vpn-banner-close {
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    cursor: pointer;
+    color: inherit;
+    padding: 0 4px;
+}

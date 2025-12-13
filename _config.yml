@@ -1,0 +1,128 @@
+sass:
+  sass_dir: _sass
+  style: compressed
+
+plugins:
+  - jekyll-feed
+  - jekyll-minifier
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+jekyll-minifier:
+  uglifier_args:
+    harmony: true
+  compress_css: true
+  compress_javascript: true
+  compress_html: true
+  exclude:
+    - "*.min.js"
+    - "*.min.css"
+  preserve_php: true
+  remove_spaces_inside_tags: true
+  remove_multi_spaces: true
+  remove_comments: true
+  remove_intertag_spaces: true
+  remove_quotes: false
+  compress_json: true
+
+collections:
+  notes:
+    output: true
+  posts:
+    output: true
+  stories:
+    output: true
+
+feed:
+  path: feed.xml
+  custom_path: _includes/feed.xml
+
+title: "Kai Qu"
+description: "Kai Qu's home page on the World Wide Web"
+url: "https://k7m.xyz"
+author:
+  name: "Kai Qu"
+  email: "kqy7yu@gmail.com"
+  twitter: "@faithk7"
+lang: "en"
+logo: "/assets/site-logo.png"
+social:
+  name: "Kai Qu"
+  links:
+    - "https://github.com/faithk7"
+    - "https://www.linkedin.com/in/kqu1106/"
+    - "https://read.cv/lastk7"
+    - "https://www.kaggle.com/faithk7u"
+
+compress_html:
+  clippings: all
+  comments: ["<!-- ", " -->"]
+  endings: all
+  ignore:
+    envs: []
+  blanklines: false
+  profile: false
+  startings: [html, head, body]
+
+# Asset compression and optimization
+assets:
+  compression: true
+  gzip: true
+  sources:
+    - assets/
+    - _sass/
+  defaults:
+    js:
+      integrity: true
+    css:
+      integrity: true
+    img:
+      integrity: true
+    png:
+      optipng:
+        level: 5
+      pngquant:
+        quality: [0.65, 0.8]
+    svg:
+      svgo: true
+      integrity: true
+
+# Cache control settings
+cache_control:
+  enabled: true
+  max_age: 31536000  # 1 year in seconds
+  static_files:
+    - '.css'
+    - '.js'
+    - '.png'
+    - '.jpg'
+    - '.jpeg'
+    - '.gif'
+    - '.ico'
+    - '.svg'
+    - '.woff'
+    - '.woff2'
+    - '.ttf'
+    - '.eot'
+  headers:
+    Cache-Control: "public, max-age=31536000, immutable"
+    Expires: "Thu, 31 Dec 2099 23:59:59 GMT"
+
+# Global compression settings
+gzip_compression:
+  enabled: true
+  extensions:
+    - '.html'
+    - '.css'
+    - '.js'
+    - '.xml'
+    - '.json'
+    - '.txt'
+  skip_extensions:
+    - '.png'
+    - '.jpg'
+    - '.gif'
+    - '.mp4'
+    - '.webp'
+  cache: true
+  cache_dir: '.jekyll-cache/gzip'
