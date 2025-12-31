@@ -102,21 +102,6 @@ a.o-setting-icon:hover {
     }
 
     .c-navbar {
-        width: 5.3rem;
-    }
-
-    .c-navbar-container {
-        margin-top: 10px;
-        margin-right: 10px;
-    }
-
-    .c-navbar-items {
-        padding-left: 0;
-    }
-}
-
-@media (max-width: 445px) {
-    .c-navbar {
         display: none;
         width: 100%;
     }
@@ -135,11 +120,11 @@ a.o-setting-icon:hover {
 
     .c-navbar-icon {
         display: block;
-        width: 44px;
-        height: 44px;
+        width: 28px;
+        height: 28px;
         position: fixed;
-        top: 6px;
-        right: 6px;
+        top: 28px;
+        right: 12px;
         z-index: 1001;
         cursor: pointer;
         display: flex;
@@ -162,8 +147,14 @@ a.o-setting-icon:hover {
     }
 
     .c-navbar-items li {
-        margin-bottom: 1rem;
         align-self: flex-end;
+        margin-bottom: var(--space-sm);
+    }
+
+    .o-navbar-item > a:not(.o-setting-icon) {
+        padding: var(--space-xs) 0;
+        line-height: 1;
+        display: inline-block;
     }
 
     .c-navbar.show + .c-navbar-icon {
@@ -179,7 +170,7 @@ a.o-setting-icon:hover {
     z-index: 900;
 }
 
-@media (max-width: 445px) {
+@media (max-width: 1032px) {
     .c-navbar.show ~ .c-navbar-overlay {
         display: block;
     }
